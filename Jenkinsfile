@@ -17,14 +17,21 @@ pipeline{
 				sh 'mvn test'
 			}
 		}
-		stage("	integration testing") {
+		stage("	Integration Testing") {
 			steps {
 				sh 'mvn verify -DskipUnitTests'
 			}
 		}
-		stage("maven build") {
+		stage("Maven Build") {
 			steps {
 				sh 'mvn clean install' 
+			}
+		}
+		stage("Static Code Analysis") {
+			steps {
+				withSonarQubeEnv(credentialsId: 'sonar') {
+					sh 'mvn clean package sonar:sonar'
+				}
 			}
 		}
 	}
