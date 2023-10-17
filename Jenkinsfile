@@ -1,4 +1,4 @@
-peline{
+pipeline{
     agent any
     stages{
         satge("Git Checkout") {
