@@ -1,7 +1,7 @@
 pipeline{
     agent any
     stages{
-        satge("Git Checkout") {
+        stage("Git Checkout") {
             steps {
                 git branch: 'main', 
                 changelog: false, 
