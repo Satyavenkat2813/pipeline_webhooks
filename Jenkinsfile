@@ -71,10 +71,16 @@ pipeline {
                     sh 'docker image tag javapro1:v1.$BUILD_ID satyavenkat/javapro1:latest'
                 }
             }
-
-            
-            
-
+        }
+        stage("Docker image Push") {
+            steps {
+                script {
+                    withCredentials([usernameColonPassword(credentialsId: 'docker', variable: 'docker')]) {
+                        sh 'docker image push satyavenkat/javapro1:v1.$BUILD_ID'
+                        sh 'docker image push satyavenkat/javapro1:latest'
+                    }
+                }
+            }
         }
     }
 }
