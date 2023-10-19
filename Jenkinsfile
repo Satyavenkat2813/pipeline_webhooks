@@ -66,6 +66,7 @@ pipeline {
         stage("Docker image build") {
             steps {
                 script {
+                    sh 'sudo chmod 666 /var/run/docker.sock'
                     sh 'docker image build -t javapro1:v1.$BUILD_ID .'
                     sh 'docker image tag javapro1:v1.$BUILD_ID satyavenkat/javapro1:v1.$BUILD_ID'
                     sh 'docker image tag javapro1:v1.$BUILD_ID satyavenkat/javapro1:latest'
