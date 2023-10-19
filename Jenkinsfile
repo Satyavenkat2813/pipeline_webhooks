@@ -75,7 +75,8 @@ pipeline {
         stage("Docker image Push") {
             steps {
                 script {
-                    withCredentials([usernameColonPassword(credentialsId: 'docker', variable: 'docker')]) {
+                    withCredentials([string(credentialsId: 'docker-hub', variable: 'docker-login')]) {
+                        sh 'docker login -u satyavenkat -p ${docker-login}'
                         sh 'docker image push satyavenkat/javapro1:v1.$BUILD_ID'
                         sh 'docker image push satyavenkat/javapro1:latest'
                     }
