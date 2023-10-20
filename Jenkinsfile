@@ -85,12 +85,5 @@ pipeline {
                 }
             }
         }
-        stage("Scan the docker image ") {
-            steps {
-                script{
-
-                }
-            }
-        }
     }
 }
