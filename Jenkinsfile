@@ -89,7 +89,7 @@ pipeline {
         stage ("Owasp") {
             steps {
                 script{
-                    dependencyCheck additionalArguments: '--scan', odcInstallation: 'owasp'
+                    dependencyCheck additionalArguments: '--scan ./', odcInstallation: 'owasp'
                     dependencyCheckPublisher pattern: '**/depandance-check.xml'
                 }
             }
