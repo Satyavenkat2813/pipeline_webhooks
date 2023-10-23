@@ -94,5 +94,13 @@ pipeline {
                 }
             }
         }
+
+        stage("trivy"){
+            steps {
+                script{
+                    sh'trivy image satyavenkat/javapro1:latest'
+                }
+            }
+        }
     }
 }
