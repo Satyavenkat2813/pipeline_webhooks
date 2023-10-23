@@ -86,5 +86,13 @@ pipeline {
                 }
             }
         }
+        stage ("Owasp") {
+            steps {
+                script{
+                    dependencyCheck additionalArguments: '', odcInstallation: 'owasp'
+                    dependencyCheckPublisher pattern: '**/depandance-check.xml'
+                }
+            }
+        }
     }
 }
